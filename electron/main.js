@@ -19,7 +19,7 @@ function createWindow() {
   mainWindown.loadURL(
     isDev
       ? "http://localhost:3000"
-      : `file://${path.join(__dirname, "../build/index.html")}`
+      : `file://${path.join(__dirname, "/../build/index.html")}`
   );
 
   // Open the DevTools.
@@ -49,6 +49,11 @@ app.on("window-all-closed", () => {
     app.quit();
   }
 });
+
+// Handle creating/removing shortcuts on Windows when installing/uninstalling
+if (require("electron-squirrel-startup")) {
+  app.quit();
+} 
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
