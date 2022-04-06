@@ -7,7 +7,7 @@ const isDev = require("electron-is-dev");
 function createWindow() {
   // Create the browser window.
   const mainWindown = new BrowserWindow({
-    width: 800,
+    width: 960,
     height: 600,
     webPreferences: {
       nodeIntegration: true
