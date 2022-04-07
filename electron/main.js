@@ -74,9 +74,14 @@ app.whenReady().then(() => {
     })
 
     ipcMain.on("writeImageFile", (event, args) =>{
-      console.log(args.name);
       var bitmap = Buffer.from(args.data,'base64');
       fs.writeFileSync(args.name,bitmap);
+
+      dialog.showMessageBox(mainWindow, {
+        title: 'Cipher AES Completed!',
+        message: "Tu nueva imagen se encuentra en: "+args.name,
+        type: 'info',
+      })
     })
 
 

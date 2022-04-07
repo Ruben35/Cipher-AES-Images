@@ -92,12 +92,6 @@ body{
 
 /* * CONTAINERS * */
 
-/* Left Container */
-.mainContainer .left{
-    
-}
-
-
 /* Right Container */
 .mainContainer .right{
     background-color: var(--elevation-L1);
@@ -137,7 +131,6 @@ body{
 }
 
 .logo svg {
-    /* width: 85.6px; */
     height: 99.2px;
 }
 

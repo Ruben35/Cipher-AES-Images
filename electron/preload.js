@@ -1,3 +1,5 @@
+//* preload.js
+
 const {ipcRenderer, contextBridge} = require('electron');
 
 const WINDOW_API = {
@@ -6,6 +8,4 @@ const WINDOW_API = {
     writeImageFile: (objectImage) => ipcRenderer.send("writeImageFile", objectImage)
 }
 
-
 contextBridge.exposeInMainWorld('api', WINDOW_API);
-
