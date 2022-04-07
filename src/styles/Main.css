@@ -219,6 +219,10 @@ button:active {
     box-shadow: 0 3px 7px 0 rgba(255, 129, 143, 0.2);
 }
 
+.selectionFile button.small{
+    width: 130px;
+    margin-left: 5px;
+}
 .selectionFile button:hover{
     box-shadow: 0 5px 9px 0 rgb(255 129 143 / 22%);
 }

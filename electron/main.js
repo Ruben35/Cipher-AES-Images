@@ -1,19 +1,23 @@
 //* main.js
 
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, dialog, ipcMain} = require("electron");
 const path = require("path");
 const isDev = require("electron-is-dev");
+const fs = require("fs");
+
+var mainWindow;
 
 function createWindow() {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 960,
     height: 600,
     maximizable: false,
     resizable: false,
     autoHideMenuBar: true,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      preload: __dirname + '/preload.js'
     }
   });
 
@@ -42,6 +46,40 @@ app.whenReady().then(() => {
         // dock icon is clicked and there are no other windows open.
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
     })
+
+    ipcMain.on("makeMessage", (event, args) =>{
+      dialog.showMessageBox(mainWindow, {
+        title: 'Cipher AES Alert!',
+        message: args,
+        type: 'warning',
+        buttons: ['Okey']
+      })
+    })
+
+    ipcMain.handle("getImageFile", async (event, args) => {
+      const result = await dialog.showOpenDialog({
+        properties: ["openFile"],
+        filters: [{ name: "Images", extensions: ["bmp"] }]
+      });
+
+      if(result.canceled){
+        return null
+      }else{
+        const files = result.filePaths;
+
+        const base64 = fs.readFileSync(files[0]).toString('base64');
+        const obj ={name: files[0], data: base64};
+        return obj;  
+      }
+    })
+
+    ipcMain.on("writeImageFile", (event, args) =>{
+      console.log(args.name);
+      var bitmap = Buffer.from(args.data,'base64');
+      fs.writeFileSync(args.name,bitmap);
+    })
+
+
 });
 
 // Quit when all windows are closed, except on macOS. There, it's common
