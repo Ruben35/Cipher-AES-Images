@@ -57,6 +57,7 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:b
     --red: #ff818f;
     --white: #fbfbfb;
     --input-text: #a4b6e1;
+    --input-placeholder: #7E8CAD;
     --logo-gradient: linear-gradient(to bottom, #60cfe0, #328894);
 }
 
@@ -92,14 +93,20 @@ body{
 /* * CONTAINERS * */
 
 /* Left Container */
-.mainContainer div{
+.mainContainer .left{
     
 }
 
 
 /* Right Container */
-.mainContainer div + div{
+.mainContainer .right{
     background-color: var(--elevation-L1);
+}
+
+.right span {
+    font-size: 22px;
+    display: inline-block;
+    margin: 30px auto 20px auto;
 }
 
 /* Logo And Name */
@@ -138,3 +145,106 @@ body{
     fill: var(--white);
 }
 
+/* * BUTTONS * */
+
+button {
+    border-radius: 35px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.07);
+    background-color: #2d325a;
+    color: var(--white);
+    font-family: var(--mediumFont);
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    display: block;
+    outline: none;
+}
+
+button:hover {
+    box-shadow: 0 5px 8px 0 rgb(0 0 0 / 15%);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+.toggleCipherButtons {
+    display: block;   
+    font-size: 18px;
+    margin-top: 75px;
+}
+
+.toggleCipherButtons button, .buttonMake button{
+    width: 162px;
+    height: 49px;
+    margin: 0 auto 39px auto;
+}
+
+.toggleCipherButtons .active, .buttonMake button {
+    background-color: var(--blue);
+    box-shadow: 0 3px 7px 0 rgba(105, 221, 238, 0.2);
+}
+
+.toggleCipherButtons .active:hover, .buttonMake button:hover {
+    box-shadow: 0 5px 9px 0 rgb(105 221 238 / 22%)
+}
+
+.toggleModeOperationButtons, .selectionFile, .buttonMake{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggleModeOperationButtons button{
+    width: 125px;
+    height: 41px;
+    font-size: 20px;
+    margin: auto 10px auto 10px;
+    padding: 0;
+}
+
+.toggleModeOperationButtons .active {
+    background-color: var(--green);
+    box-shadow: 0 3px 7px 0 rgba(140, 255, 158, 0.2);
+}
+
+.toggleModeOperationButtons .active:hover {
+    box-shadow: 0 5px 9px 0 rgb(140 255 158 / 22%);
+}
+
+.selectionFile button{
+    width: 269px;
+    height: 41px;
+    background-color: var(--red);
+    box-shadow: 0 3px 7px 0 rgba(255, 129, 143, 0.2);
+}
+
+.selectionFile button:hover{
+    box-shadow: 0 5px 9px 0 rgb(255 129 143 / 22%);
+}
+
+.buttonMake button{
+    width: 288px;
+    margin: 30px auto 0px auto;
+}
+
+/* * TEXTFIELDS * */
+input[type=text] {
+    width: 504px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: var(--elevation-L2);
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 18px;
+    color: var(--input-text);
+}
+
+input[type=text]:focus, input[type=text]:active {
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.07);
+}
+
+input[type=text]::placeholder {
+    color: var(--input-placeholder);
+}

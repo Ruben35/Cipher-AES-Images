@@ -6,9 +6,12 @@ const isDev = require("electron-is-dev");
 
 function createWindow() {
   // Create the browser window.
-  const mainWindown = new BrowserWindow({
+  const mainWindow = new BrowserWindow({
     width: 960,
     height: 600,
+    maximizable: false,
+    resizable: false,
+    autoHideMenuBar: true,
     webPreferences: {
       nodeIntegration: true
     }
@@ -16,7 +19,7 @@ function createWindow() {
 
   // and load the index.html of the app.
   // win.loadFile("index.html");
-  mainWindown.loadURL(
+  mainWindow.loadURL(
     isDev
       ? "http://localhost:3000"
       : `file://${path.join(__dirname, "/../build/index.html")}`
@@ -24,7 +27,7 @@ function createWindow() {
 
   // Open the DevTools.
   if (isDev) {
-    mainWindown.webContents.openDevTools({ mode: "detach" });
+    mainWindow.webContents.openDevTools({ mode: "detach" });
   }
 }
 
